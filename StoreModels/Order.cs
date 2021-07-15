@@ -5,7 +5,9 @@ namespace StoreModels {
     {
         private int _id;
 
-        private int _StoreID;
+        private int _storeID;
+
+        private int _customerID;
         private List<OrderItem> _items;
         private string _location;
         private double _price;
@@ -25,11 +27,11 @@ namespace StoreModels {
         {
             get
             {
-                return _StoreID;
+                return _storeID;
             }
             set 
             {
-                _StoreID = value;
+                _storeID = value;
             }
         }
         public List<OrderItem> Items 
@@ -64,6 +66,17 @@ namespace StoreModels {
             {
                 _price = value;
             } 
+        }
+
+        public int CustomerID {
+            get
+            {
+                return _customerID;
+            }
+            set 
+            {
+                _customerID = value;
+            }
         }
 
         public override string ToString()
