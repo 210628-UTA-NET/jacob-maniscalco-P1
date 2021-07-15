@@ -9,7 +9,7 @@ namespace StoreDL
     
         StoreModels.Customer GetCustomer(int p_UserID);
 
-        bool AddOrder(StoreModels.Order p_order, int p_customerID);
+        bool AddOrder(StoreModels.Order p_order);
 
         List<StoreModels.Order> GetOrders(int p_customerID);
 
