@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StoreBL;
+using StoreDL;
 
 namespace StoreWebUI
 {
@@ -24,6 +27,11 @@ namespace StoreWebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<StoreDL.StoreDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DataBaseReference")));
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerBL, CustomerBL>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
