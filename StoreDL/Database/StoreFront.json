@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Target",
+    "address": "900 North Street",
+    "inventory": [
+      {
+        "product": {
+          "name": "Milk",
+          "price": 4,
+          "description": "2% Milk",
+          "category": "Dairy"
+        },
+        "quantity": 20
+      }
+    ],
+    "orders": [
+      {
+        "order": [
+          {
+            "product": {
+              "name": "Milk",
+              "price": 4,
+              "description": "2% Milk",
+              "category": "Dairy"
+            },
+            "quantity": 20
+          }
+        ],
+        "location": "901 North Street",
+        "price": 19.99
+      }
+    ]
+  },
+  {
+    "name": "Target",
+    "address": "900 N Street",
+    "inventory": null,
+    "orders": null
+  }
+]
