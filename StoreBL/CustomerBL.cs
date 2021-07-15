@@ -27,7 +27,7 @@ namespace StoreBL
         }
         public bool AddOrder(StoreModels.Order p_order, int p_customerID)
         {
-            return _repo.AddOrder(p_order, p_customerID);
+            return _repo.AddOrder(p_order);
         }
 
         public List<StoreModels.Order> GetOrders(int p_customerID)
