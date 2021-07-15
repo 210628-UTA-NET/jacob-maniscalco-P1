@@ -8,19 +8,19 @@ namespace StoreDL
     public class ProductRepository : IProductRepository
     {
         
-
-        public ProductRepository()
+        private StoreDBContext _context;
+        public ProductRepository(StoreDBContext p_context)
         {
-            throw new NotImplementedException();
+            _context = p_context;
         }
         public List<Product> getAllProducts()
         {
-            throw new NotImplementedException();
+            return _context.Products.Select(product => product).ToList();
         }
 
         public Product getProduct(int p_productID)
         {
-           throw new NotImplementedException();
+           return _context.Products.FirstOrDefault(product => product.ID == p_productID);
         }
     }
 }
