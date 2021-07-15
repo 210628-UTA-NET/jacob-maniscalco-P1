@@ -11,6 +11,9 @@ namespace StoreDL
         public DbSet<StoreModels.OrderItem> OrderItems { get; set; }
         public DbSet<StoreModels.Product> Products { get; set; }
         public DbSet<StoreModels.StoreFront> StoreFronts { get; set; }
+
+        public StoreDBContext(DbContextOptions options) : base(options)
+        { }
     
         protected override void OnConfiguring(DbContextOptionsBuilder p_options)
         {
