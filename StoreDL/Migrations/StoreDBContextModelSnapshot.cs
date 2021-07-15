@@ -56,6 +56,9 @@ namespace StoreDL.Migrations
                     b.Property<int?>("StoreFrontID")
                         .HasColumnType("int");
 
+                    b.Property<int>("StoreID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("ProductID");
@@ -72,7 +75,7 @@ namespace StoreDL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerID")
+                    b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<string>("Location")
@@ -180,7 +183,9 @@ namespace StoreDL.Migrations
                 {
                     b.HasOne("StoreModels.Customer", null)
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("StoreModels.StoreFront", null)
                         .WithMany("Orders")
