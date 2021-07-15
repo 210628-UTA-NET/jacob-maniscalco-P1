@@ -2,6 +2,8 @@ namespace StoreModels {
     public class LineItem
     {
         private int _id;
+
+        private int _storeID;
         private Product _product;
         private int _quantity;
 
@@ -41,6 +43,18 @@ namespace StoreModels {
             {
                 _quantity = value;
             } 
+        }
+
+        public int StoreID 
+        {
+            get
+            {
+                return _storeID;
+            }
+            set 
+            {
+                _storeID = value;
+            }
         }
 
         public override string ToString()
