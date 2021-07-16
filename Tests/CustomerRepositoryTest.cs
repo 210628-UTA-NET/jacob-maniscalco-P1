@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using StoreBL;
 using StoreDL;
 using StoreModels;
 
@@ -28,7 +27,7 @@ namespace Tests
                 List<Customer> customers = repo.GetAllCustomers();
 
                 Assert.NotNull(customers);
-                Assert.Equal(1, customers.Count());
+                Assert.Single(customers);
             }
         }
 
@@ -54,7 +53,7 @@ namespace Tests
                 List<Order> orders = repo.GetOrders(1);
 
                 Assert.NotNull(orders);
-                Assert.Equal(1, orders.Count());
+                Assert.Single(orders);
             }
         }
 
