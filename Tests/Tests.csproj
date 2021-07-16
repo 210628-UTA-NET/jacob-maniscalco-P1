@@ -24,4 +24,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StoreDL\StoreDL.csproj" />
+    <ProjectReference Include="..\StoreBL\StoreBL.csproj" />
+    <ProjectReference Include="..\StoreModels\StoreModels.csproj" />
+  </ItemGroup>
+
 </Project>
