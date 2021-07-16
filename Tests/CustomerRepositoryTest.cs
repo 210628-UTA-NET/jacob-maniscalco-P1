@@ -28,10 +28,59 @@ namespace Tests
                 List<Customer> customers = repo.GetAllCustomers();
 
                 Assert.NotNull(customers);
-                //Assert.Equal(1, customers.Count());
+                Assert.Equal(1, customers.Count());
             }
         }
-        
+
+        [Fact]
+        public void GetCustomerShouldReturnACustomer()
+        {
+            using (var context = new StoreDBContext(_options))
+            {
+                ICustomerRepository repo = new CustomerRepository(context);
+                Customer customer = repo.GetCustomer(1);
+
+                Assert.NotNull(customer);
+                Assert.Equal("Jacob", customer.Name);
+            }
+        }
+
+        [Fact]
+        public void GetOrdersShouldReturnAUsersOrder()
+        {
+            using (var context = new StoreDBContext(_options))
+            {
+                ICustomerRepository repo = new CustomerRepository(context);
+                List<Order> orders = repo.GetOrders(1);
+
+                Assert.NotNull(orders);
+                Assert.Equal(1, orders.Count());
+            }
+        }
+
+        [Fact]
+        public void CustomerExistsShouldReturnTrue()
+        {
+            using (var context = new StoreDBContext(_options))
+            {
+                ICustomerRepository repo = new CustomerRepository(context);
+                bool exists = repo.customerExists(1);
+
+                Assert.True(exists);
+            }
+        }
+
+        [Fact]
+        public void CustomerExistsShouldReturnFalse()
+        {
+            using (var context = new StoreDBContext(_options))
+            {
+                ICustomerRepository repo = new CustomerRepository(context);
+                bool exists = repo.customerExists(10);
+
+                Assert.False(exists);
+            }
+        }
         
         private void Seed()
         {
