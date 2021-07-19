@@ -29,6 +29,11 @@ namespace StoreWebUI.Controllers
             return View();
         }
 
+        public IActionResult Update(StoreWebUI.Models.CustomerVM customer)
+        {     
+            throw new NotImplementedException();
+        }
+
         public IActionResult Edit(int custID)
         {
             return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(custID)));
