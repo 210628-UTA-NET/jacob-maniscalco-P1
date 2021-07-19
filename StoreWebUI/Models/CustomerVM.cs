@@ -1,15 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using StoreModels;
 
 namespace StoreWebUI.Models
 {
     public class CustomerVM
     {
-
+        [Required]
         public int ID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
         public List<Order> Orders { get; set; }
         
