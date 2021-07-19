@@ -25,10 +25,33 @@ namespace StoreBL
         /// <returns>Returns a Customer model for the customer</returns>
         StoreModels.Customer GetCustomer(int p_id);
 
+        /// <summary>
+        /// Adds an order to the database
+        /// </summary>
+        /// <param name="p_order">StoreModel.Order object</param>
+        /// <param name="p_customerID">integer value representing the customer's id</param>
+        /// <returns>boolean if the order was successfully added</returns>
         bool AddOrder(StoreModels.Order p_order, int p_customerID);
 
+        /// <summary>
+        /// Retrieves all orders from a particular customer
+        /// </summary>
+        /// <param name="p_customerID">integer value representing the customer's id</param>
+        /// <returns>A list of StoreModels.Order objects </returns>
         List<StoreModels.Order> GetOrders(int p_customerID);
 
+        /// <summary>
+        /// Determines if a customer exists within a table
+        /// </summary>
+        /// <param name="p_customerID">integer value representing the customer's id</param>
+        /// <returns>boolean if the customer exists in the database</returns>
         bool CustomerExists(int p_customerID);
+
+        /// <summary>
+        /// Update's a customer's information in the database
+        /// </summary>
+        /// <param name="customer">StoreModels.Customer object used to update the customer</param>
+        /// <returns>boolean if the customer's information was successfully updated</returns>
+        StoreModels.Customer UpdateCustomer(StoreModels.Customer customer);
     }
 }

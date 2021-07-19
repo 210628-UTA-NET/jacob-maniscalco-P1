@@ -39,5 +39,10 @@ namespace StoreBL
         {
             return _repo.customerExists(p_customerID);
         }
+
+        public StoreModels.Customer UpdateCustomer(StoreModels.Customer customer)
+        {
+            return _repo.UpdateCustomer(customer);
+        }
     }
 }
