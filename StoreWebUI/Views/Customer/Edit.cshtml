@@ -13,15 +13,19 @@
     <h2 style= "bottom: 20px;">Edit Customer</h2>    
 
     <form class="row g-3" asp-action="Update">
+        <div class="col-md-4">
+            <label asp-for="ID" class="form-label" >ID</label>
+            <input asp-for="ID" class="form-control" type="text" value="@Model.ID" readonly>
+        </div>
         <div class="col-md-6">
             <label asp-for="Name" class="form-label">Name</label>
             <input asp-for="Name" type="text" class="form-control" id="name" placeholder="@Model.Name">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
             <input asp-for="PhoneNumber" type="text" class="form-control" id="phone-number" value = "@Model.PhoneNumber">
         </div>
-        <div class="col-12">
+        <div class="col-md-6">
             <label asp-for="Address" class="form-label">Address</label>
             <input asp-for="Address" type="text" class="form-control" id="address" value="@Model.Address">
         </div>
