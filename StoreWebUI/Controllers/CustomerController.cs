@@ -37,7 +37,9 @@ namespace StoreWebUI.Controllers
                 Address = customer.Address,
                 PhoneNumber = customer.PhoneNumber
             };
-            return View();
+            _customerBL.UpdateCustomer(cust);
+
+           return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int custID)
