@@ -28,5 +28,10 @@ namespace StoreWebUI.Controllers
         {
             return View();
         }
+
+        public IActionResult Edit(int custID)
+        {
+            return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(custID)));
+        }
     }
 }
