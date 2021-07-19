@@ -14,5 +14,12 @@ namespace StoreDL
         List<StoreModels.Order> GetOrders(int p_customerID);
 
         bool customerExists(int p_customerID);
+
+        /// <summary>
+        /// Update's a customer's information in the database
+        /// </summary>
+        /// <param name="customer">StoreModels.Customer object used to update the customer</param>
+        /// <returns>boolean if the customer's information was successfully updated</returns>
+       StoreModels.Customer UpdateCustomer(StoreModels.Customer customer);
     }
 }

@@ -47,5 +47,15 @@ namespace StoreDL
         {
           return _context.Customers.Any(customer => customer.ID == p_customerID);
         }
+        public StoreModels.Customer UpdateCustomer(StoreModels.Customer customer)
+        {
+            StoreModels.Customer cust = _context.Customers.FirstOrDefault(dbcustomer => dbcustomer.ID == customer.ID);
+
+            cust.Name = customer.Name;
+            cust.Address = customer.Address;
+            cust.PhoneNumber = customer.PhoneNumber;
+            _context.SaveChanges();
+            return cust;
+        }
     }
 }
