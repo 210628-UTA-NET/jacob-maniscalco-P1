@@ -6,7 +6,8 @@ using Xunit;
 using StoreDL;
 using StoreModels;
 
-namespace Tests {
+namespace Tests 
+{
     public class ProductRepositoryTest
     {
         private readonly DbContextOptions<StoreDBContext> _options;
