@@ -80,6 +80,26 @@ namespace Tests
                 Assert.False(exists);
             }
         }
+
+        [Fact]
+        public void UpdateCustomerShouldReturnTrue()
+        {
+
+            using (var context = new StoreDBContext(_options))
+            {
+                 StoreModels.Customer updatedCustomer = new StoreModels.Customer()
+                {
+                    ID = 1,
+                    Name = "Jack Skellington",
+                    Address = "123 HalloweenTown Drive",
+                    PhoneNumber = "0593041234"
+                };
+                ICustomerRepository repo = new CustomerRepository(context);
+                StoreModels.Customer customer = repo.UpdateCustomer(updatedCustomer);
+                Assert.NotNull(customer);
+                Assert.Equal("Jack Skellington", customer.Name);
+            }
+        }
         
         private void Seed()
         {
