@@ -49,13 +49,13 @@ namespace StoreDL
         }
         public StoreModels.Customer UpdateCustomer(StoreModels.Customer customer)
         {
-            StoreModels.Customer cust = _context.Customers.FirstOrDefault(dbcustomer => dbcustomer.ID == customer.ID);
-
+            var cust = _context.Customers.FirstOrDefault(updatedCustomer => updatedCustomer.ID == customer.ID);
             cust.Name = customer.Name;
             cust.Address = customer.Address;
             cust.PhoneNumber = customer.PhoneNumber;
+            _context.Customers.Update(cust);
             _context.SaveChanges();
-            return cust;
+            return customer;
         }
     }
 }
