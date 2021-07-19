@@ -40,7 +40,7 @@ namespace Tests
                 Customer customer = repo.GetCustomer(1);
 
                 Assert.NotNull(customer);
-                Assert.Equal("Jacob", customer.Name);
+                Assert.Equal("Jacob Maniscalco", customer.Name);
             }
         }
 
@@ -91,7 +91,7 @@ namespace Tests
                 context.Customers.AddRange(
                     new Customer
                     {
-                        Name = "Jacob",
+                        Name = "Jacob Maniscalco",
                         Address = "500 Spooky Road",
                         PhoneNumber = "4012944506",
                         Orders = new List<Order>
