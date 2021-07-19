@@ -30,12 +30,19 @@ namespace StoreWebUI.Controllers
         }
 
         public IActionResult Update(StoreWebUI.Models.CustomerVM customer)
-        {     
-            throw new NotImplementedException();
+        {   StoreModels.Customer cust = new StoreModels.Customer()
+            {
+                ID = customer.ID,
+                Name = customer.Name,
+                Address = customer.Address,
+                PhoneNumber = customer.PhoneNumber
+            };
+            return View();
         }
 
         public IActionResult Edit(int custID)
         {
+            Console.WriteLine(_customerBL.GetCustomer(custID));
             return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(custID)));
         }
     }
