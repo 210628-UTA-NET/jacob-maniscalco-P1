@@ -1,0 +1,25 @@
+@model StoreWebUI.Models.CustomerVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Find A Customer</h2>
+    <form class="row g-3" asp-action="Display">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Full Name</span>
+            </div>
+            <input asp-for="Name" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" asp-action="Display">Search</button>
+        </div>
+    </form>
+</body>
+</html>
