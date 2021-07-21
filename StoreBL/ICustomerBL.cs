@@ -31,6 +31,8 @@ namespace StoreBL
         /// <param name="p_order">StoreModel.Order object</param>
         /// <param name="p_customerID">integer value representing the customer's id</param>
         /// <returns>boolean if the order was successfully added</returns>
+        
+        StoreModels.Customer GetCustomer(string p_name);
         bool AddOrder(StoreModels.Order p_order, int p_customerID);
 
         /// <summary>
