@@ -23,12 +23,10 @@ namespace StoreWebUI.Controllers
                 .ToList()
             );
         }
-
         public IActionResult Create()
         {
             return View();
         }
-
         public IActionResult Update(StoreWebUI.Models.CustomerVM customer)
         {   StoreModels.Customer cust = new StoreModels.Customer()
             {
@@ -41,11 +39,25 @@ namespace StoreWebUI.Controllers
 
            return RedirectToAction("Index");
         }
-
         public IActionResult Edit(int custID)
         {
-            Console.WriteLine(_customerBL.GetCustomer(custID));
             return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(custID)));
+        }
+        public IActionResult Add()
+        {
+            return View(new StoreWebUI.Models.CustomerVM());
+        }
+        public IActionResult AddCustomer(StoreWebUI.Models.CustomerVM p_customer)
+        {
+            StoreModels.Customer customer = new StoreModels.Customer()
+            {
+                Name = p_customer.Name,
+                Address = p_customer.Address,
+                PhoneNumber = p_customer.PhoneNumber
+            };
+            _customerBL.AddCustomer(customer);
+
+            return RedirectToAction("Index");
         }
     }
 }
