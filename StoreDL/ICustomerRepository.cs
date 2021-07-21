@@ -8,6 +8,7 @@ namespace StoreDL
         List<StoreModels.Customer> GetAllCustomers();
     
         StoreModels.Customer GetCustomer(int p_UserID);
+        StoreModels.Customer GetCustomer(string p_customerName);
 
         bool AddOrder(StoreModels.Order p_order);
 
