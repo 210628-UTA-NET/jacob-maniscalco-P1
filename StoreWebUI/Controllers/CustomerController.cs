@@ -59,5 +59,14 @@ namespace StoreWebUI.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult FindCustomer()
+        {
+            return View();
+        }
+        public IActionResult Display(StoreWebUI.Models.CustomerVM p_customer)
+        {
+            return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(p_customer.Name)));
+        }
     }
 }
