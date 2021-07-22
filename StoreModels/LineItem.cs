@@ -7,55 +7,16 @@ namespace StoreModels {
         private Product _product;
         private int _quantity;
 
+        public int ID { get; set; }
+        public int StoreID { get; set; }
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
+
         public LineItem()
         { }
 
 
-        public Product Product 
-        { 
-            get
-            {
-                return _product;
-            } 
-            set
-            {
-                _product = value;
-            } 
-        }
-        public int ID 
-        {
-            get
-            {
-                return _id;
-            }
-            set 
-            {
-                _id = value;
-            }
-        }
-        public int Quantity 
-        { 
-            get
-            {
-                return _quantity;
-            } 
-            set
-            {
-                _quantity = value;
-            } 
-        }
-
-        public int StoreID 
-        {
-            get
-            {
-                return _storeID;
-            }
-            set 
-            {
-                _storeID = value;
-            }
-        }
+       
 
         public override string ToString()
         {
