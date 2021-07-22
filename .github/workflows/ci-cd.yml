@@ -1,0 +1,56 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    #- name: Test
+    #  run: dotnet test --no-build --verbosity normal
+    - name: Code Analysis
+      # You may pin to the exact commit or the version.
+      # uses: highbyte/sonarscan-dotnet@90025f8a91fb480278dbd6cf740ee9d862f7794c
+      uses: highbyte/sonarscan-dotnet@v2.1.1-beta
+      with:
+        # The key of the SonarQube project
+        sonarProjectKey: 210628-UTA-NET_jacob-maniscalco-P1
+        # The name of the SonarQube project
+        sonarProjectName: jacob-maniscalco-P1
+        sonarOrganization: 210628-uta-net
+        # Optional command arguments to 'dotnet build'
+#        dotnetBuildArguments:
+        dotnetDisableTests: true
+         # Optional command arguments to 'dotnet test'
+        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+         # Optional extra command arguments the the SonarScanner 'begin' command
+        sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
+      # authenticating the connection to sonar cloud
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: publish
+      run: dotnet publish --configuration Release -o ./publish
+    - name: deploy
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: JacobHalloweenEmporium # Replace with your app name
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
+        package: ./publish
+
+  
