@@ -7,7 +7,7 @@ namespace StoreBL
     public class StoreBL : IStoreBL
     {
 
-        private StoreDL.IStoreRepository _repo;
+        private readonly StoreDL.IStoreRepository _repo;
         public StoreBL(StoreDL.IStoreRepository p_repo)
         {
             _repo = p_repo;
@@ -37,13 +37,13 @@ namespace StoreBL
             return _repo.GetOrders(p_StoreID);
         }
 
-        public bool addInventory(int p_storeID, int p_lineItemID, int p_Quantity)
+        public bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
         {
-            return _repo.addInventory(p_storeID, p_lineItemID, p_Quantity);
+            return _repo.addInventory(p_StoreID, p_LineItemID, p_quantity);
         }
-         public bool removeInventory(int p_storeID, int p_lineItemID, int p_Quantity)
+         public bool removeInventory(int p_StoreID, int p_LineItemID, int p_quantity)
          {
-             return _repo.removeInventory(p_storeID, p_lineItemID, p_Quantity);
+             return _repo.removeInventory(p_StoreID, p_LineItemID, p_quantity);
          }
          public StoreModels.LineItem GetLineItem(int p_storeID, int p_lineItemID)
          {

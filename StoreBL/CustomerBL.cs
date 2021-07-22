@@ -5,7 +5,7 @@ namespace StoreBL
 {
     public class CustomerBL : ICustomerBL
     {
-        private StoreDL.ICustomerRepository _repo;
+        private readonly StoreDL.ICustomerRepository _repo;
 
         public CustomerBL(StoreDL.ICustomerRepository p_repo)
         {
@@ -45,9 +45,9 @@ namespace StoreBL
             return _repo.customerExists(p_customerID);
         }
 
-        public StoreModels.Customer UpdateCustomer(StoreModels.Customer customer)
+        public StoreModels.Customer UpdateCustomer(StoreModels.Customer p_customer)
         {
-            return _repo.UpdateCustomer(customer);
+            return _repo.UpdateCustomer(p_customer);
         }
     }
 }

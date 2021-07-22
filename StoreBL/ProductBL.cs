@@ -6,7 +6,7 @@ namespace StoreBL
 {
     public class ProductBL : IProductBL
     {
-        private StoreDL.IProductRepository _repo;
+        private readonly StoreDL.IProductRepository _repo;
 
         public ProductBL(StoreDL.IProductRepository p_repo)
         {

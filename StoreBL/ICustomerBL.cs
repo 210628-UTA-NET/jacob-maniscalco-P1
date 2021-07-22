@@ -23,7 +23,7 @@ namespace StoreBL
         /// </summary>
         /// <param name="p_id"> The ID of the customer requested</param>
         /// <returns>Returns a Customer model for the customer</returns>
-        StoreModels.Customer GetCustomer(int p_id);
+        StoreModels.Customer GetCustomer(int p_CustomerID);
 
         /// <summary>
         /// Adds an order to the database
@@ -32,7 +32,7 @@ namespace StoreBL
         /// <param name="p_customerID">integer value representing the customer's id</param>
         /// <returns>boolean if the order was successfully added</returns>
         
-        StoreModels.Customer GetCustomer(string p_name);
+        StoreModels.Customer GetCustomer(string p_CustomerName);
         bool AddOrder(StoreModels.Order p_order, int p_customerID);
 
         /// <summary>
@@ -54,6 +54,6 @@ namespace StoreBL
         /// </summary>
         /// <param name="customer">StoreModels.Customer object used to update the customer</param>
         /// <returns>boolean if the customer's information was successfully updated</returns>
-        StoreModels.Customer UpdateCustomer(StoreModels.Customer customer);
+        StoreModels.Customer UpdateCustomer(StoreModels.Customer p_customer);
     }
 }
