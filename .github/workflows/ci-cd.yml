@@ -29,13 +29,13 @@ jobs:
       uses: highbyte/sonarscan-dotnet@v2.1.1-beta
       with:
         # The key of the SonarQube project
-        sonarProjectKey: 210628-uta-net
+        sonarProjectKey: 210628-uta-net_jacob-maniscalco-P1
         # The name of the SonarQube project
         sonarProjectName: jacob-maniscalco-P1
         sonarOrganization: 210628-uta-net
         # Optional command arguments to 'dotnet build'
 #        dotnetBuildArguments:
-        #dotnetDisableTests: true
+        dotnetDisableTests: true
          # Optional command arguments to 'dotnet test'
         dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
          # Optional extra command arguments the the SonarScanner 'begin' command
