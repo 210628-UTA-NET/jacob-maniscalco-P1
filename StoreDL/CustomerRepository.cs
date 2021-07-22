@@ -9,7 +9,7 @@ namespace StoreDL
     public class CustomerRepository : ICustomerRepository
     {
 
-        private StoreDBContext _context;
+        private readonly StoreDBContext _context;
         public CustomerRepository(StoreDBContext p_context)
         {
             _context = p_context;
@@ -26,9 +26,9 @@ namespace StoreDL
             return _context.Customers.Select(customer => customer).ToList();
         }
 
-        public StoreModels.Customer GetCustomer(int p_customerID)
+        public StoreModels.Customer GetCustomer(int p_CustomerID)
         {
-            return _context.Customers.FirstOrDefault(customer => customer.ID == p_customerID);
+            return _context.Customers.FirstOrDefault(customer => customer.ID == p_CustomerID);
         }
         public StoreModels.Customer GetCustomer(string p_customerName)
         {
@@ -42,24 +42,24 @@ namespace StoreDL
             return true;
         }
 
-        public List<StoreModels.Order> GetOrders(int p_customerID)
+        public List<StoreModels.Order> GetOrders(int p_CustomerID)
         {
-            return _context.Orders.Where(order => order.CustomerID == p_customerID).ToList();
+            return _context.Orders.Where(order => order.CustomerID == p_CustomerID).ToList();
         }
 
         public bool customerExists(int p_customerID)
         {
           return _context.Customers.Any(customer => customer.ID == p_customerID);
         }
-        public StoreModels.Customer UpdateCustomer(StoreModels.Customer customer)
+        public StoreModels.Customer UpdateCustomer(StoreModels.Customer p_customer)
         {
-            var cust = _context.Customers.FirstOrDefault(updatedCustomer => updatedCustomer.ID == customer.ID);
-            cust.Name = customer.Name;
-            cust.Address = customer.Address;
-            cust.PhoneNumber = customer.PhoneNumber;
+            var cust = _context.Customers.FirstOrDefault(updatedCustomer => updatedCustomer.ID == p_customer.ID);
+            cust.Name = p_customer.Name;
+            cust.Address = p_customer.Address;
+            cust.PhoneNumber = p_customer.PhoneNumber;
             _context.Customers.Update(cust);
             _context.SaveChanges();
-            return customer;
+            return p_customer;
         }
     }
 }

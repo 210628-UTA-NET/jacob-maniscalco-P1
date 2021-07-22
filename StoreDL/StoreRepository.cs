@@ -11,7 +11,7 @@ namespace StoreDL
     public class StoreRepository : IStoreRepository
     {
        
-        private StoreDBContext _context;
+        private readonly StoreDBContext _context;
         public StoreRepository(StoreDBContext p_context)
         {
             _context = p_context;
@@ -21,9 +21,9 @@ namespace StoreDL
            return _context.StoreFronts.Select(store => store).ToList();
         }
         
-        public StoreModels.StoreFront getAStoreFront(int p_storeID)
+        public StoreModels.StoreFront getAStoreFront(int p_StoreID)
         { 
-           return _context.StoreFronts.FirstOrDefault(store => store.ID == p_storeID);
+           return _context.StoreFronts.FirstOrDefault(store => store.ID == p_StoreID);
         }
 
         // Think about changing this to return a boolean instead, which can act as a flag for success
@@ -44,19 +44,19 @@ namespace StoreDL
             return _context.Orders.Where(order => order.StoreID == p_storeID).ToList();
         }
 
-        public bool addInventory(int p_storeID, int p_lineItemID, int p_Quantity)
+        public bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
         {
             throw new NotImplementedException();
         }
 
-        public bool removeInventory(int p_storeID, int p_lineItemID, int p_Quantity)
+        public bool removeInventory(int p_StoreID, int p_LineItemID, int p_quantity)
         {
            throw new NotImplementedException();
         }
 
-        public StoreModels.LineItem GetLineItem(int p_storeID, int p_lineItemID)
+        public StoreModels.LineItem GetLineItem(int p_StoreID, int p_LineItemID)
         {
-           return _context.LineItems.FirstOrDefault(item => item.StoreID == p_storeID && item.ID == p_lineItemID);
+           return _context.LineItems.FirstOrDefault(item => item.StoreID == p_StoreID && item.ID == p_LineItemID);
         }
 
         public bool StoreExists(int p_storeID)

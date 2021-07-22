@@ -24,7 +24,7 @@ namespace StoreDL
         /// </summary>
         /// <param name="store">The storeFront object the user wishes to insert into the database</param>
         /// <returns>A storeFront object that has just been created</returns>
-        bool addAStoreFront(StoreModels.StoreFront store);
+        bool addAStoreFront(StoreModels.StoreFront p_store);
 
         /// <summary>
         /// Retrieves a list of Line Items (Store Inventory) from the db
@@ -35,9 +35,9 @@ namespace StoreDL
 
         List<StoreModels.Order> GetOrders(int p_storeID);
 
-        bool addInventory(int p_storeID, int p_lineItemID, int p_Quantity);
-        bool removeInventory(int p_storeID, int p_lineItemID, int p_Quantity);
-         StoreModels.LineItem GetLineItem(int p_storeID, int p_lineItemID);
+        bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity);
+        bool removeInventory(int p_StoreID, int p_LineItemID, int p_quantity);
+         StoreModels.LineItem GetLineItem(int p_StoreID, int p_LineItemID);
 
          bool StoreExists(int p_storeID);
     }

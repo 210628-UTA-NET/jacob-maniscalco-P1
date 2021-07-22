@@ -7,12 +7,12 @@ namespace StoreDL
 
         List<StoreModels.Customer> GetAllCustomers();
     
-        StoreModels.Customer GetCustomer(int p_UserID);
-        StoreModels.Customer GetCustomer(string p_customerName);
+        StoreModels.Customer GetCustomer(int p_CustomerID);
+        StoreModels.Customer GetCustomer(string p_CustomerName);
 
         bool AddOrder(StoreModels.Order p_order);
 
-        List<StoreModels.Order> GetOrders(int p_customerID);
+        List<StoreModels.Order> GetOrders(int p_CustomerID);
 
         bool customerExists(int p_customerID);
 
@@ -21,6 +21,6 @@ namespace StoreDL
         /// </summary>
         /// <param name="customer">StoreModels.Customer object used to update the customer</param>
         /// <returns>boolean if the customer's information was successfully updated</returns>
-       StoreModels.Customer UpdateCustomer(StoreModels.Customer customer);
+       StoreModels.Customer UpdateCustomer(StoreModels.Customer p_customer);
     }
 }

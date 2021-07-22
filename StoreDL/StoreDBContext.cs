@@ -15,11 +15,8 @@ namespace StoreDL
         public StoreDBContext(DbContextOptions options) : base(options)
         { }
     
-        protected override void OnConfiguring(DbContextOptionsBuilder p_options)
-        {
-            //Place connection string here 
-            //p_options.UseSqlServer("");
-        }
+        protected override void OnConfiguring(DbContextOptionsBuilder p_optionsBuilder)
+        { }
         
         protected override void OnModelCreating(ModelBuilder p_ModelBuilder)
         {

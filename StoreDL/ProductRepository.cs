@@ -8,7 +8,7 @@ namespace StoreDL
     public class ProductRepository : IProductRepository
     {
         
-        private StoreDBContext _context;
+        private readonly StoreDBContext _context;
         public ProductRepository(StoreDBContext p_context)
         {
             _context = p_context;
