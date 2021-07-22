@@ -1,12 +1,6 @@
 namespace StoreModels {
     public class LineItem
     {
-        private int _id;
-
-        private int _storeID;
-        private Product _product;
-        private int _quantity;
-
         public int ID { get; set; }
         public int StoreID { get; set; }
         public Product Product { get; set; }
