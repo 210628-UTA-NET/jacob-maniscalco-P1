@@ -29,7 +29,7 @@ jobs:
       uses: highbyte/sonarscan-dotnet@v2.1.1-beta
       with:
         # The key of the SonarQube project
-        sonarProjectKey: 210628-uta-net_jacob-maniscalco-P1
+        sonarProjectKey: 210628-UTA-NET_jacob-maniscalco-P1
         # The name of the SonarQube project
         sonarProjectName: jacob-maniscalco-P1
         sonarOrganization: 210628-uta-net
