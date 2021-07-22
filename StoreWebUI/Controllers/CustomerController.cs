@@ -8,7 +8,7 @@ namespace StoreWebUI.Controllers
 {
     public class CustomerController : Controller
     {
-        private StoreBL.ICustomerBL _customerBL;
+        private readonly StoreBL.ICustomerBL _customerBL;
 
         public CustomerController(ICustomerBL p_customerBL)
         {
