@@ -31,6 +31,8 @@ namespace StoreWebUI
             services.AddDbContext<StoreDL.StoreDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DataBaseReference")));
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerBL, CustomerBL>();
+            services.AddScoped<IStoreRepository, StoreRepository>();
+            services.AddScoped<IStoreBL, StoreBL.StoreBL>();
 
         }
 
