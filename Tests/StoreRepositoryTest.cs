@@ -117,7 +117,7 @@ namespace Tests
                         {
                             new LineItem()
                             {
-                                StoreID = 1,
+                                StoreFrontID = 1,
                                 Quantity = 20, 
                                 Product = new Product()
                                 {
@@ -129,7 +129,7 @@ namespace Tests
                             },
                             new LineItem()
                             {
-                                StoreID = 1, 
+                                StoreFrontID = 1, 
                                 Quantity = 142, 
                                 Product = new Product()
                                 {
@@ -141,7 +141,7 @@ namespace Tests
                             },
                             new LineItem()
                             {
-                                StoreID = 1, 
+                                StoreFrontID = 1, 
                                 Quantity = 32,
                                 Product = new Product()
                                 {

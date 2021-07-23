@@ -118,7 +118,7 @@ namespace Tests
                         {
                             new Order()
                             {
-                                StoreID = 1,
+                                StoreFrontID = 1,
                                 CustomerID = 1,
                                 Location = "500 Spooky Road",
                                 Price = 100.99,
