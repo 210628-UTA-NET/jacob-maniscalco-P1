@@ -44,8 +44,5 @@ namespace StoreDL
                 .Property(store => store.ID)
                 .ValueGeneratedOnAdd();
         }
-    
-    
-    
     }
 }

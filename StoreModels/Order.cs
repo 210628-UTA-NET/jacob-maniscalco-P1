@@ -4,7 +4,7 @@ namespace StoreModels {
     public class Order 
     {
        public int ID { get; set; }
-       public int StoreID { get; set; }
+       public int StoreFrontID { get; set; }
        public int CustomerID { get; set; }
        public List<OrderItem> Items { get; set; }
        public string Location { get; set; }

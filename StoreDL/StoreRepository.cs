@@ -36,12 +36,12 @@ namespace StoreDL
 
         public List<StoreModels.LineItem> GetStoreInventory(int p_storeID)
         {
-           return _context.LineItems.Where(item => item.StoreID == p_storeID).ToList();
+           return _context.LineItems.Where(item => item.StoreFrontID == p_storeID).ToList();
         }
 
         public List<StoreModels.Order> GetOrders(int p_storeID)
         {
-            return _context.Orders.Where(order => order.StoreID == p_storeID).ToList();
+            return _context.Orders.Where(order => order.StoreFrontID == p_storeID).ToList();
         }
 
         public bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
@@ -56,7 +56,7 @@ namespace StoreDL
 
         public StoreModels.LineItem GetLineItem(int p_StoreID, int p_LineItemID)
         {
-           return _context.LineItems.FirstOrDefault(item => item.StoreID == p_StoreID && item.ID == p_LineItemID);
+           return _context.LineItems.FirstOrDefault(item => item.StoreFrontID == p_StoreID && item.ID == p_LineItemID);
         }
 
         public bool StoreExists(int p_storeID)

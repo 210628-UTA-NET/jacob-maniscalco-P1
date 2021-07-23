@@ -39,9 +39,9 @@ namespace StoreWebUI.Controllers
 
            return RedirectToAction("Index");
         }
-        public IActionResult Edit(int custID)
+        public IActionResult Edit(int p_CustomerID)
         {
-            return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(custID)));
+            return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(p_CustomerID)));
         }
         public IActionResult Add()
         {
