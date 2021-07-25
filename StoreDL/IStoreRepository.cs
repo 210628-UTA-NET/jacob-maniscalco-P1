@@ -35,8 +35,8 @@ namespace StoreDL
 
         List<StoreModels.Order> GetOrders(int p_storeID);
 
-        bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity);
-        bool removeInventory(int p_StoreID, int p_LineItemID, int p_quantity);
+        StoreModels.LineItem addInventory(int p_StoreID, int p_LineItemID, int p_quantity);
+        StoreModels.LineItem removeInventory(int p_StoreID, int p_LineItemID, int p_quantity);
          StoreModels.LineItem GetLineItem(int p_StoreID, int p_LineItemID);
 
          bool StoreExists(int p_storeID);

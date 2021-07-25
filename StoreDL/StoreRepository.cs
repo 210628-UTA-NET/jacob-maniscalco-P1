@@ -44,14 +44,20 @@ namespace StoreDL
             return _context.Orders.Where(order => order.StoreFrontID == p_storeID).ToList();
         }
 
-        public bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
+        public StoreModels.LineItem addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
         {
-            throw new NotImplementedException();
+            var item = _context.LineItems.FirstOrDefault(lineItem => lineItem.StoreFrontID == p_StoreID && lineItem.ID == p_LineItemID);
+            item.Quantity += p_quantity;
+            _context.SaveChanges();
+            return item;
         }
 
-        public bool removeInventory(int p_StoreID, int p_LineItemID, int p_quantity)
+        public StoreModels.LineItem removeInventory(int p_StoreID, int p_LineItemID, int p_quantity)
         {
-           throw new NotImplementedException();
+           var item = _context.LineItems.FirstOrDefault(lineItem => lineItem.StoreFrontID == p_StoreID && lineItem.ID == p_LineItemID);
+            item.Quantity -= p_quantity;
+            _context.SaveChanges();
+            return item;
         }
 
         public StoreModels.LineItem GetLineItem(int p_StoreID, int p_LineItemID)
