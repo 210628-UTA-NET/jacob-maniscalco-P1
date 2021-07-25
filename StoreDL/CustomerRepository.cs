@@ -28,11 +28,20 @@ namespace StoreDL
 
         public StoreModels.Customer GetCustomer(int p_CustomerID)
         {
-            return _context.Customers.FirstOrDefault(customer => customer.ID == p_CustomerID);
+            return _context.Customers.Include("Orders").FirstOrDefault(customer => customer.ID == p_CustomerID);
         }
         public StoreModels.Customer GetCustomer(string p_CustomerName)
         {
-            return _context.Customers.FirstOrDefault(customer => customer.Name == p_CustomerName);
+            return _context.Customers.Include(customer => customer.Orders).ThenInclude(order => order.Items).ThenInclude(product => product.Product).FirstOrDefault(customer => customer.Name == p_CustomerName);
+        }
+
+        public StoreModels.Customer GetCustomerAll(int p_CustomerID)
+        {
+            return _context.Customers.Include(customer => customer.Orders).ThenInclude(order => order.Items).ThenInclude(product => product.Product).FirstOrDefault(customer => customer.ID == p_CustomerID);
+        }
+        public StoreModels.Customer GetCustomerAll(string p_CustomerName)
+        {
+            return _context.Customers.Include(customer => customer.Orders).ThenInclude(order => order.Items).ThenInclude(product => product.Product).FirstOrDefault(customer => customer.Name == p_CustomerName);
         }
 
         public bool AddOrder(StoreModels.Order p_order)

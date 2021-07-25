@@ -3,17 +3,66 @@ namespace StoreDL
 {
     public interface ICustomerRepository
     {
+        /// <summary>
+        /// Adds a customer row into the db
+        /// </summary>
+        /// <param name="p_customer">StoreModels.Customer object</param>
+        /// <returns>boolean indicating if the customer was successfully added to the db</returns>
         bool AddCustomer(StoreModels.Customer p_customer);
 
+        /// <summary>
+        /// Gets all the customers from the db
+        /// </summary>
+        /// <returns>List of StoreModels.Customer objects</returns>
         List<StoreModels.Customer> GetAllCustomers();
     
+        /// <summary>
+        /// Retrieves a single customer from the db depending on customer id
+        /// </summary>
+        /// <param name="p_CustomerID">integer representing the customer id</param>
+        /// <returns>StoreModels.Customer object </returns>
         StoreModels.Customer GetCustomer(int p_CustomerID);
+
+        /// <summary>
+        /// Retrieves a single customer from the db depending on customer name
+        /// </summary>
+        /// <param name="p_CustomerName">the customer name</param>
+        /// <returns>StoreModels.Customer object</returns>
         StoreModels.Customer GetCustomer(string p_CustomerName);
 
+        /// <summary>
+        /// Retrieves a customer with all associated fields populated from the db
+        /// </summary>
+        /// <param name="p_CustomerID">customer id</param>
+        /// <returns>StoreModels.Customer object</returns>
+        StoreModels.Customer GetCustomerAll(int p_CustomerID);
+
+        /// <summary>
+        /// Retrieves a customer with all associated fields populated from the db
+        /// </summary>
+        /// <param name="p_CustomerName">customer name</param>
+        /// <returns>StoreModels.Customer object</returns>
+        StoreModels.Customer GetCustomerAll(string p_CustomerName);
+
+        /// <summary>
+        /// Adds an order row to the db
+        /// </summary>
+        /// <param name="p_order">StoreModels.Order object</param>
+        /// <returns>boolean indicating if the row was succesfully inserted</returns>
         bool AddOrder(StoreModels.Order p_order);
 
+        /// <summary>
+        /// Gets a list of orders from the db 
+        /// </summary>
+        /// <param name="p_CustomerID">customer id</param>
+        /// <returns>List of StoreModels.Order objects</returns>
         List<StoreModels.Order> GetOrders(int p_CustomerID);
 
+        /// <summary>
+        /// Searches the db to see if a customer with the provided customer id exists
+        /// </summary>
+        /// <param name="p_customerID">Customer ID</param>
+        /// <returns>boolean indicating if the customer exists</returns>
         bool customerExists(int p_customerID);
 
         /// <summary>
