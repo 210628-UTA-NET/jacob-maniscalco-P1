@@ -66,7 +66,7 @@ namespace StoreWebUI.Controllers
         }
         public IActionResult Display(StoreWebUI.Models.CustomerVM p_customer)
         {
-            return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomer(p_customer.Name)));
+            return View(new StoreWebUI.Models.CustomerVM(_customerBL.GetCustomerAll(p_customer.Name)));
         }
     }
 }
