@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    <h2 style= "bottom: 20px;">Edit Customer</h2>    
+    <h2 style= "bottom: 20px;">Customer Details</h2>    
 
     <form class="row g-3" asp-action="Update">
         <div class="col-md-4">
@@ -31,5 +31,38 @@
         </div>
     </form>
 
+
+    @foreach (var order in Model.Orders)
+    {
+        <h3>Order: # @Html.DisplayFor(ord => order.ID)</h3>
+        <p>Store ID: # @Html.DisplayFor(ord => order.StoreFrontID)</p>
+        <p>Location: @Html.DisplayFor(ord => order.Location)</p>
+        <p>Price: @Html.DisplayFor(ord => order.Price)</p>
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                   <th>ID</th>
+                   <th>Name </th>
+                   <th>Price</th>
+                   <th>Description</th>
+                   <th>Category</th>
+                </tr>
+            </thead>
+             <tbody>
+                @foreach(var orderItem in order.Items)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(item => orderItem.ID)</td>
+                        <td>@Html.DisplayFor(item => orderItem.Product.Name)</td>
+                        <td>@Html.DisplayFor(item => orderItem.Product.Price)</td>
+                        <td>@Html.DisplayFor(item => orderItem.Product.Category)</td>
+                        <td>@Html.DisplayFor(item => orderItem.Product.Description)</td>
+                    </tr>
+                }
+            </tbody> 
+        </table>
+    } 
+    
 </body>
 </html>
