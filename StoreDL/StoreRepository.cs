@@ -36,7 +36,7 @@ namespace StoreDL
 
         public List<StoreModels.LineItem> GetStoreInventory(int p_storeID)
         {
-           return _context.LineItems.Where(item => item.StoreFrontID == p_storeID).ToList();
+           return _context.LineItems.Include(store => store.Product).Where(item => item.StoreFrontID == p_storeID).ToList();
         }
 
         public List<StoreModels.Order> GetOrders(int p_storeID)
