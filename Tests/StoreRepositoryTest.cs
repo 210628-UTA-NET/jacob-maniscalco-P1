@@ -100,6 +100,32 @@ namespace Tests
         }
     }
 
+    [Fact] 
+    public void AddInventoryShouldReturn30Quantity()
+    {
+        using (var context = new StoreDBContext(_options))
+        {
+            IStoreRepository repo = new StoreRepository(context);
+            StoreModels.LineItem updatedItem = repo.addInventory(1, 1, 10);
+
+            Assert.NotNull(updatedItem);
+            Assert.Equal(30, updatedItem.Quantity);
+        }
+    }
+
+    [Fact]
+    public void RemoveInventoryShouldReturn10Quantity()
+    {
+        using (var context = new StoreDBContext(_options))
+        {
+            IStoreRepository repo = new StoreRepository(context);
+            StoreModels.LineItem updatedItem = repo.removeInventory(1, 1, 10);
+
+            Assert.NotNull(updatedItem);
+            Assert.Equal(10, updatedItem.Quantity);
+        }
+    }
+
 
         private void Seed()
         {
