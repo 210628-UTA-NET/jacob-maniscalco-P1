@@ -30,6 +30,15 @@ namespace StoreBL
         {
             return _repo.GetCustomer(p_CustomerName);
         }
+
+        public StoreModels.Customer GetCustomerAll(int p_CustomerID)
+        {
+            return _repo.GetCustomerAll(p_CustomerID);
+        }
+        public StoreModels.Customer GetCustomerAll(string p_CustomerName)
+        {
+            return _repo.GetCustomerAll(p_CustomerName);
+        }
         public bool AddOrder(StoreModels.Order p_order, int p_CustomerID)
         {
             return _repo.AddOrder(p_order);

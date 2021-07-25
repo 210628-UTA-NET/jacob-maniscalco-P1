@@ -32,7 +32,26 @@ namespace StoreBL
         /// <param name="p_customerID">integer value representing the customer's id</param>
         /// <returns>boolean if the order was successfully added</returns>
         
+        /// <summary>
+        /// Returns a StoreModels.Customer object according to user input 
+        /// </summary>
+        /// <param name="p_CustomerName">the customer name</param>
+        /// <returns>StoreModels.Customer object</returns>
         StoreModels.Customer GetCustomer(string p_CustomerName);
+
+        /// <summary>
+        /// Returns a StoreModels.Customer object with all fields populated (including Orders => Product)
+        /// </summary>
+        /// <param name="p_CustomerID">The customer ID</param>
+        /// <returns>StoreModels.Customer object</returns>
+        StoreModels.Customer GetCustomerAll(int p_CustomerID);
+
+        /// <summary>
+        /// Returns a StoreModels.Customer object with all fields populated (including Orders => Product)
+        /// </summary>
+        /// <param name="p_CustomerName">The Customer Name</param>
+        /// <returns>StoreModels.Customer object</returns>
+        StoreModels.Customer GetCustomerAll(string p_CustomerName);
         bool AddOrder(StoreModels.Order p_order, int p_CustomerID);
 
         /// <summary>
