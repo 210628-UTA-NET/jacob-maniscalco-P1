@@ -30,9 +30,9 @@ namespace StoreDL
         {
             return _context.Customers.FirstOrDefault(customer => customer.ID == p_CustomerID);
         }
-        public StoreModels.Customer GetCustomer(string p_customerName)
+        public StoreModels.Customer GetCustomer(string p_CustomerName)
         {
-            return _context.Customers.FirstOrDefault(customer => customer.Name == p_customerName);
+            return _context.Customers.FirstOrDefault(customer => customer.Name == p_CustomerName);
         }
 
         public bool AddOrder(StoreModels.Order p_order)

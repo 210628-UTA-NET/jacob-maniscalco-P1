@@ -7,9 +7,16 @@ namespace StoreWebUI.Models
 {
     public class LineItemVM
     {
+        [Required]
         public int ID { get; set; }
+
+        [Required]
         public int StoreFrontID { get; set; }
+
+        [Required]
         public Product Product { get; set; }
+
+        [Required]
         public int Quantity { get; set; }
         public LineItemVM()
         { }

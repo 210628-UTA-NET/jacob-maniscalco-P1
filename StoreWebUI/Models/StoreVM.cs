@@ -9,12 +9,16 @@ namespace StoreWebUI.Models
     {
         [Required]
         public int ID { get; set; }
+        
         [Required]
         public string Name { get; set; }
+        
         [Required]
         public string Address { get; set; }
+        
         [Required]
         public List<LineItem> Inventory { get; set; }
+        
         public List<Order> Orders { get; set; }
 
         public StoreVM()

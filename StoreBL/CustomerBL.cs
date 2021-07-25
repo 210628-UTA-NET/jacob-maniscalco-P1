@@ -21,23 +21,23 @@ namespace StoreBL
             return _repo.GetAllCustomers();
         }
 
-        public StoreModels.Customer GetCustomer(int p_UserID)
+        public StoreModels.Customer GetCustomer(int p_CustomerID)
         {
-            return _repo.GetCustomer(p_UserID);
+            return _repo.GetCustomer(p_CustomerID);
         }
 
-        public StoreModels.Customer GetCustomer(string p_customerName)
+        public StoreModels.Customer GetCustomer(string p_CustomerName)
         {
-            return _repo.GetCustomer(p_customerName);
+            return _repo.GetCustomer(p_CustomerName);
         }
-        public bool AddOrder(StoreModels.Order p_order, int p_customerID)
+        public bool AddOrder(StoreModels.Order p_order, int p_CustomerID)
         {
             return _repo.AddOrder(p_order);
         }
 
-        public List<StoreModels.Order> GetOrders(int p_customerID)
+        public List<StoreModels.Order> GetOrders(int p_CustomerID)
         {
-            return _repo.GetOrders(p_customerID);
+            return _repo.GetOrders(p_CustomerID);
         }
 
         public bool CustomerExists(int p_customerID)

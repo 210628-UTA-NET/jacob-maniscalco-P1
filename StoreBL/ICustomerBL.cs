@@ -33,14 +33,14 @@ namespace StoreBL
         /// <returns>boolean if the order was successfully added</returns>
         
         StoreModels.Customer GetCustomer(string p_CustomerName);
-        bool AddOrder(StoreModels.Order p_order, int p_customerID);
+        bool AddOrder(StoreModels.Order p_order, int p_CustomerID);
 
         /// <summary>
         /// Retrieves all orders from a particular customer
         /// </summary>
         /// <param name="p_customerID">integer value representing the customer's id</param>
         /// <returns>A list of StoreModels.Order objects </returns>
-        List<StoreModels.Order> GetOrders(int p_customerID);
+        List<StoreModels.Order> GetOrders(int p_CustomerID);
 
         /// <summary>
         /// Determines if a customer exists within a table

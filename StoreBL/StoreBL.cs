@@ -17,9 +17,9 @@ namespace StoreBL
             return _repo.getAllStoreFronts();
         }
 
-        public StoreFront GetStoreFront(int p_storeID)
+        public StoreFront GetStoreFront(int p_StoreFrontID)
         {
-            return _repo.getAStoreFront(p_storeID);
+            return _repo.getAStoreFront(p_StoreFrontID);
         }
 
         public Boolean addStoreFront(StoreModels.StoreFront p_store)
@@ -37,11 +37,11 @@ namespace StoreBL
             return _repo.GetOrders(p_StoreID);
         }
 
-        public bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
+        public StoreModels.LineItem addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
         {
             return _repo.addInventory(p_StoreID, p_LineItemID, p_quantity);
         }
-         public bool removeInventory(int p_StoreID, int p_LineItemID, int p_quantity)
+         public StoreModels.LineItem removeInventory(int p_StoreID, int p_LineItemID, int p_quantity)
          {
              return _repo.removeInventory(p_StoreID, p_LineItemID, p_quantity);
          }

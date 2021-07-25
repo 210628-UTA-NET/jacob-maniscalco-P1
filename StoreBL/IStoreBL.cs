@@ -16,7 +16,7 @@ namespace StoreBL
         /// </summary>
         /// <param name="p_storeFrontID">Corresponds to the storefront ID in the database</param>
         /// <returns>StoreFront object</returns>
-        StoreModels.StoreFront GetStoreFront(int p_storeFrontID);
+        StoreModels.StoreFront GetStoreFront(int p_StoreFrontID);
 
         /// <summary>
         ///  Adds a StoreFront object to the database 
@@ -29,12 +29,12 @@ namespace StoreBL
         /// </summary>
         /// <param name="p_storeID">The store ID </param>
         /// <returns>List of LineItems representing the store's inventory</returns>
-        List<StoreModels.LineItem> GetStoreInventory(int p_storeID);
+        List<StoreModels.LineItem> GetStoreInventory(int p_StoreID);
 
         List<StoreModels.Order> GetOrders(int p_storeID);
 
-        bool addInventory(int p_StoreID, int p_LineItemID, int p_quantity);
-        bool removeInventory(int p_StoreID, int p_LineItemID, int p_quantity);
+        StoreModels.LineItem addInventory(int p_StoreID, int p_LineItemID, int p_quantity);
+        StoreModels.LineItem removeInventory(int p_StoreID, int p_LineItemID, int p_quantity);
 
         StoreModels.LineItem GetLineItem(int p_storeID, int p_lineItemID);
 
