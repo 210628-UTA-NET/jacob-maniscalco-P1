@@ -26,12 +26,11 @@ namespace StoreWebUI.Controllers
 
         public IActionResult View(int p_StoreID)
         {
-            StoreWebUI.Models.StoreVM store = new Models.StoreVM(_storeBL.GetStoreFront(p_StoreID));
-            foreach(StoreModels.LineItem item in store.Inventory)
-            {
-                Console.WriteLine(item);
-            }
-            return View(new StoreWebUI.Models.StoreVM(_storeBL.GetStoreFront(p_StoreID)));
+            return View(
+                _storeBL.GetStoreInventory(p_StoreID)
+                .Select(item => new StoreWebUI.Models.LineItemVM(item))
+                .ToList()
+            );
         }
     }
 }
