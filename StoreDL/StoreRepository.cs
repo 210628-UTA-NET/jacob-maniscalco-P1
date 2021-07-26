@@ -63,9 +63,17 @@ namespace StoreDL
             return item;
         }
 
+        public StoreModels.LineItem updateInventory(int p_StoreID, int p_LineItemID, int p_quantity)
+        {
+            var item = _context.LineItems.FirstOrDefault(lineItem => lineItem.StoreFrontID == p_StoreID && lineItem.ID == p_LineItemID);
+            item.Quantity = p_quantity;
+            _context.SaveChanges();
+            return item;
+        }
+
         public StoreModels.LineItem GetLineItem(int p_StoreID, int p_LineItemID)
         {
-           return _context.LineItems.FirstOrDefault(item => item.StoreFrontID == p_StoreID && item.ID == p_LineItemID);
+           return _context.LineItems.Include(item => item.Product).FirstOrDefault(item => item.StoreFrontID == p_StoreID && item.ID == p_LineItemID);
         }
 
         public bool StoreExists(int p_storeID)
