@@ -25,7 +25,7 @@
                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
                     <td>@Html.DisplayFor(modelItem => item.Address)</td>
                     <td>
-                        @Html.ActionLink("Inventory", "View", new {p_StoreID = item.ID}, new  {@class = "btn btn-light"})
+                        @Html.ActionLink("View", "View", new {p_StoreFrontID = item.ID}, new  {@class = "btn btn-light"})
                     </td>
                 </tr>
             }
