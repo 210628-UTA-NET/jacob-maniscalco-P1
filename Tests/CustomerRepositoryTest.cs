@@ -41,6 +41,8 @@ namespace Tests
 
                 Assert.NotNull(customer);
                 Assert.Equal("Jacob Maniscalco", customer.Name);
+                Assert.Equal(1, customer.ID);
+                Assert.Equal(1, customer.Orders.Count);
             }
         }
 
@@ -108,6 +110,14 @@ namespace Tests
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
+                context.StoreFronts.AddRange(
+                  new StoreFront()
+                    {
+                        Name = "Jacob's Halloween Emporium",
+                        Address = "200 Elm Street"
+                    }
+                
+                );
                 context.Customers.AddRange(
                     new Customer
                     {
@@ -116,18 +126,17 @@ namespace Tests
                         PhoneNumber = "4012944506",
                         Orders = new List<Order>
                         {
-                            new Order()
+                            new Order
                             {
                                 StoreFrontID = 1,
-                                CustomerID = 1,
                                 Location = "500 Spooky Road",
                                 Price = 100.99,
                                 Items = new List<OrderItem>
                                 {
-                                   new OrderItem()
+                                   new OrderItem
                                    {
                                        Quantity = 5,
-                                       Product = new Product()
+                                       Product = new Product
                                        {
                                            Name = "Clown Mask",
                                            Price = 9.99,
@@ -135,10 +144,11 @@ namespace Tests
                                            Category = "Accessory"
                                        }
                                    },
-                                    new OrderItem()
+                                   
+                                    new OrderItem
                                    {
                                        Quantity = 4,
-                                       Product = new Product()
+                                       Product = new Product
                                        {
                                            Name = "Batman Costume",
                                            Price = 18.99,
@@ -146,7 +156,6 @@ namespace Tests
                                            Category = "Costume"
                                        }
                                    }
-
                                 }
                             }
                         }
