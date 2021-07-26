@@ -63,6 +63,10 @@ namespace StoreBL
         /// <returns>A StoreModels.LineItem object </returns>
         StoreModels.LineItem removeInventory(int p_StoreID, int p_LineItemID, int p_quantity);
 
+        StoreModels.LineItem updateInventory(int p_StoreID, int p_LineItemID, int p_quantity);
+        
+           
+
         /// <summary>
         /// Retrieves a StoreModels.LineItem object from the db
         /// </summary>

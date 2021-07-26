@@ -48,6 +48,12 @@ namespace StoreBL
          {
              return _repo.removeInventory(p_StoreID, p_LineItemID, p_quantity);
          }
+
+        public StoreModels.LineItem updateInventory(int p_StoreID, int p_LineItemID, int p_quantity)
+        {
+            return _repo.updateInventory(p_StoreID, p_LineItemID, p_quantity);
+        }
+
          public StoreModels.LineItem GetLineItem(int p_storeID, int p_lineItemID)
          {
              return _repo.GetLineItem(p_storeID, p_lineItemID);
