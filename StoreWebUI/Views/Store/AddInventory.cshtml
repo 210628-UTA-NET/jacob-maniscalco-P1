@@ -1,0 +1,36 @@
+@model StoreWebUI.Models.LineItemVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Inventory</title>
+</head>
+<body>
+    <h2> Item Information </h2>
+    <p> Line Item ID: # @Html.DisplayFor(item => item.ID)</p>
+    <p> Store ID: # @Html.DisplayFor(item => item.StoreFrontID)</p>
+    <p> Available Quantity: @Html.DisplayFor(item => item.Quantity)</p>
+    <p>Product ID: # @Html.DisplayFor(item => item.Product.ID)</p>
+    <p>Product Name: @Html.DisplayFor(item => item.Product.Name)</p>
+    <p>Product Price: @Html.DisplayFor(item => item.Product.Price)</p>
+    <p>Product Description: @Html.DisplayFor(item => item.Product.Description)</p>
+    <p>Product Category: @Html.DisplayFor(item => item.Product.Category)</p>
+
+    <form class="row g-3" asp-action="AddQuantity">
+        <label class="form-label">Item ID: </label>
+        <input asp-for="ID" class="form-control" type="text" value="@Model.ID">
+        <label class="form-label">Store ID:</label>
+        <input asp-for="StoreFrontID" class="form-control" type="text" value="@Model.StoreFrontID">
+        <div class="col-md-6">
+            <label class="form-label">Enter new quantity amount</label>
+            <input asp-for="Quantity" class="form-control" type="text" value="@Model.Quantity">
+        </div>
+        <div class="col-3" style="top: 15px;">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</body>
+</html>
