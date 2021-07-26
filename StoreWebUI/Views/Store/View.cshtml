@@ -31,6 +31,7 @@
                     <td>@Html.DisplayFor(modelItem => item.Product.Description)</td>
                     <td>@Html.DisplayFor(modelItem => item.Product.Category)</td>
                     <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                    <td>@Html.ActionLink("Add Inventory", "AddInventory", new {p_ItemID = item.ID, p_StoreID = Model.ID}, new  {@class = "btn btn-light"})</td>
                 </tr>
             }
         </tbody>
