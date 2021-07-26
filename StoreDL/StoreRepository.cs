@@ -26,7 +26,10 @@ namespace StoreDL
            return _context.StoreFronts.FirstOrDefault(store => store.ID == p_StoreID);
         }
 
-        // Think about changing this to return a boolean instead, which can act as a flag for success
+        public StoreModels.StoreFront GetStoreFrontAll(int p_StoreID)
+        {
+            return _context.StoreFronts.Include(store => store.Inventory).Include(store => store.Orders).ThenInclude(order => order.Items).ThenInclude(item => item.Product).FirstOrDefault(store => store.ID == p_StoreID);
+        }
         public bool addAStoreFront(StoreModels.StoreFront p_store)
         {
             _context.StoreFronts.Add(p_store);
