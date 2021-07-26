@@ -23,14 +23,9 @@ namespace StoreWebUI.Controllers
                 .ToList()
             );
         }
-
-        public IActionResult View(int p_StoreID)
+        public IActionResult View(int p_StoreFrontID)
         {
-            return View(
-                _storeBL.GetStoreInventory(p_StoreID)
-                .Select(item => new StoreWebUI.Models.LineItemVM(item))
-                .ToList()
-            );
+            return View(new StoreWebUI.Models.StoreVM(_storeBL.GetStoreFrontAll(p_StoreFrontID)));
         }
     }
 }
