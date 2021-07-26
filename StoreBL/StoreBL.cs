@@ -6,7 +6,6 @@ namespace StoreBL
 {
     public class StoreBL : IStoreBL
     {
-
         private readonly StoreDL.IStoreRepository _repo;
         public StoreBL(StoreDL.IStoreRepository p_repo)
         {
@@ -20,6 +19,10 @@ namespace StoreBL
         public StoreFront GetStoreFront(int p_StoreFrontID)
         {
             return _repo.getAStoreFront(p_StoreFrontID);
+        }
+        public StoreModels.StoreFront GetStoreFrontAll(int p_StoreFrontID)
+        {
+            return _repo.GetStoreFrontAll(p_StoreFrontID);
         }
 
         public Boolean addStoreFront(StoreModels.StoreFront p_store)
