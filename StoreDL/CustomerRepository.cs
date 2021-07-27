@@ -70,5 +70,31 @@ namespace StoreDL
             _context.SaveChanges();
             return p_customer;
         }
+
+        public StoreModels.Order createOrder(StoreModels.Order p_order)
+        {
+            _context.Orders.Add(p_order);
+            _context.SaveChanges();
+            return p_order;
+        }
+
+        public StoreModels.OrderItem AddOrderItem(StoreModels.OrderItem p_OrderItem)
+        {
+            _context.OrderItems.Add(p_OrderItem);
+            _context.SaveChanges();
+            return p_OrderItem;
+        }
+        public StoreModels.Order GetOrder(int p_OrderID)
+        {
+            StoreModels.Order order = _context.Orders.Include(order => order.Items).ThenInclude(item => item.Product).FirstOrDefault(order => order.ID == p_OrderID);
+            return order;
+        }
+         public StoreModels.Order SetOrderPrice(int p_OrderID, double p_price)
+        {
+            StoreModels.Order order = _context.Orders.FirstOrDefault(order => order.ID == p_OrderID);
+            order.Price = p_price;
+            _context.SaveChanges();
+            return order;
+        }
     }
 }

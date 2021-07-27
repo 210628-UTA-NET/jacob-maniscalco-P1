@@ -18,7 +18,7 @@ namespace StoreDL
         protected override void OnConfiguring(DbContextOptionsBuilder p_optionsBuilder)
         {
             // Do nothing because db connection details are in appsettings.json
-         }
+        }
         
         protected override void OnModelCreating(ModelBuilder p_ModelBuilder)
         {
