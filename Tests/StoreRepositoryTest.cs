@@ -126,6 +126,31 @@ namespace Tests
         }
     }
 
+    [Fact]
+    public void GetStoreFrontAllShouldReturn1Store()
+    {
+        using (var context = new StoreDBContext(_options))
+        {
+            IStoreRepository repo = new StoreRepository(context);
+            StoreModels.StoreFront store = repo.GetStoreFrontAll(1);
+
+            Assert.NotNull(store);
+            Assert.Equal("Jacob's Halloween Emporium", store.Name);
+        }
+    }
+
+     [Fact]
+    public void GetStoreFrontAllShouldReturn3LineItems()
+    {
+        using (var context = new StoreDBContext(_options))
+        {
+            IStoreRepository repo = new StoreRepository(context);
+            StoreModels.StoreFront store = repo.GetStoreFrontAll(1);
+
+            Assert.NotNull(store);
+            Assert.Equal(3, store.Inventory.Count);
+        }
+    }
 
         private void Seed()
         {
