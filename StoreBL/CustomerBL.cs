@@ -58,5 +58,22 @@ namespace StoreBL
         {
             return _repo.UpdateCustomer(p_customer);
         }
+
+        public StoreModels.Order createOrder(StoreModels.Order p_order)
+        {
+            return _repo.createOrder(p_order);
+        }
+        public StoreModels.OrderItem AddOrderItem(StoreModels.OrderItem p_OrderItem)
+        {
+            return _repo.AddOrderItem(p_OrderItem);
+        }
+        public StoreModels.Order GetOrder(int p_OrderID)
+        {
+            return _repo.GetOrder(p_OrderID);
+        }
+        public StoreModels.Order SetOrderPrice(int p_OrderID, double p_price)
+        {
+            return _repo.SetOrderPrice(p_OrderID, p_price);
+        }
     }
 }

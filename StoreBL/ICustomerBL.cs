@@ -74,5 +74,12 @@ namespace StoreBL
         /// <param name="customer">StoreModels.Customer object used to update the customer</param>
         /// <returns>boolean if the customer's information was successfully updated</returns>
         StoreModels.Customer UpdateCustomer(StoreModels.Customer p_customer);
+
+        StoreModels.Order createOrder(StoreModels.Order p_order);
+
+        StoreModels.OrderItem AddOrderItem(StoreModels.OrderItem p_OrderItem);
+
+        StoreModels.Order GetOrder(int p_OrderID);
+        StoreModels.Order SetOrderPrice(int p_OrderID, double p_price);
     }
 }
