@@ -1,0 +1,45 @@
+@model StoreWebUI.Models.OrderVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Order Details</h2>
+    <p>Order ID: #@Html.DisplayFor(order => order.Order.ID)</p>
+    <p>Customer ID: #@Html.DisplayFor(order => order.Order.CustomerID)</p>
+    <p>Store ID: #@Html.DisplayFor(order => order.Order.StoreFrontID)</p>
+    <p>Location: @Html.DisplayFor(order => order.Order.Location)</p>
+    <p>Total Price: $@Html.DisplayFor(order => order.Order.Price)</p>
+    
+<table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Order.Items)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(detail => item.Product.ID)</td>
+                    <td> @Html.DisplayFor(detail => item.Product.Name)</td>
+                    <td> @Html.DisplayFor(detail => item.Product.Price)</td>
+                    <td> @Html.DisplayFor(detail => item.Product.Description)</td>
+                    <td> @Html.DisplayFor(detail => item.Product.Category)</td>
+                   <td> @Html.DisplayFor(detail => item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
