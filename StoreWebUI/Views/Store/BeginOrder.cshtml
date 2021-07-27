@@ -1,0 +1,55 @@
+@model StoreWebUI.Models.OrderItemVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.StoreFront.Inventory)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Product.ID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Product.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Product.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Product.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @using (Html.BeginForm("AddItem", "Store", FormMethod.Post))
+    {
+        @Html.HiddenFor(ordervm => ordervm.StoreFront.ID)
+        @Html.HiddenFor(ordervm => ordervm.Item.OrderID)
+        <div class="col-md-6">
+            <label asp-for="@Model.Item.ID" class="form-label">Product ID</label>
+            <input asp-for="@Model.Item.ID" type="text" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="@Model.Item.Quantity" class="form-label">Quantity</label>
+            <input asp-for="@Model.Item.Quantity" type="text" class="form-control">
+        </div>
+        <div class="col-3" style="top: 15px;">
+            <button type="submit" class="btn btn-primary">Add Item</button>
+        </div>
+    }
+</body>
+</html>
