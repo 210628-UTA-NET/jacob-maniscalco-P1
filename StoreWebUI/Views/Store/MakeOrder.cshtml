@@ -1,0 +1,35 @@
+@model StoreWebUI.Models.OrderVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Enter Customer Information</h3>
+
+    <h2>Available Inventory</h2>
+
+    @using (Html.BeginForm("BeginOrder", "Store"))
+    {
+        <div class="col-md-6">
+            <label asp-for="@Model.Order.StoreFrontID" class="form-label">Customer ID</label>
+            <input asp-for="@Model.Order.StoreFrontID" type="text" class="form-control" value="@Model.Order.StoreFrontID" readonly>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="@Model.Order.CustomerID" class="form-label">Customer ID</label>
+            <input asp-for="@Model.Order.CustomerID" type="text" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label asp-for="@Model.Order.Location" class="form-label">Location</label>
+            <input asp-for="@Model.Order.Location" type="text" class="form-control">
+        </div>
+        <div class="col-3" style="top: 15px;">
+            <button type="submit" class="btn btn-primary">Start Order</button>
+        </div>
+    }
+</body>
+</html>
