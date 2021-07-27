@@ -25,7 +25,28 @@ namespace Tests
                 }
             );
 
-            var storeController = new StoreController(mockBL.Object);
+            var productBL = new Mock<StoreBL.IProductBL>();
+            productBL.Setup(pBL => pBL.GetAllProducts()).Returns
+            (
+                new List<StoreModels.Product>
+                {
+                    new StoreModels.Product() { Name = "Batman Costume"},
+                    new StoreModels.Product() { Name = "Ironman Costume"}
+                }
+            );
+
+            var customerBL = new Mock<StoreBL.ICustomerBL>();
+            customerBL.Setup(cBL => cBL.GetAllCustomers()).Returns
+            (
+                new List<StoreModels.Customer>
+                {
+                    new StoreModels.Customer() { Name = "Jacob"},
+                    new StoreModels.Customer() { Name = "Ethan"}
+                }
+            
+            );
+
+            var storeController = new StoreController(mockBL.Object, productBL.Object, customerBL.Object);
 
             var result = storeController.Index();
 
