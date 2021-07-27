@@ -37,6 +37,10 @@
         </tbody>
     </table>
 
+    <div>
+        @Html.ActionLink("Create Order", "MakeOrder", "Store", new {p_StoreID = Model.ID}, new  {@class = "btn btn-light"})
+    </div>
+
     <h2>Customer Orders</h2>
     @foreach(var order in Model.Orders)
     {
