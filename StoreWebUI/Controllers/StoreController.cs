@@ -9,10 +9,14 @@ namespace StoreWebUI.Controllers
     public class StoreController : Controller
     {
         private readonly StoreBL.IStoreBL _storeBL;
+        private readonly StoreBL.IProductBL _productBL;
+        private readonly StoreBL.ICustomerBL _customerBL;
 
-        public StoreController(IStoreBL p_StoreBL)
+        public StoreController(IStoreBL p_StoreBL, IProductBL p_ProductBL, ICustomerBL p_CustomerBL)
         {
             _storeBL = p_StoreBL;
+            _productBL = p_ProductBL;
+            _customerBL = p_CustomerBL;
         }
 
         public IActionResult Index()
@@ -49,6 +53,75 @@ namespace StoreWebUI.Controllers
 
            return RedirectToAction("Index");
 
+        }
+
+        public IActionResult MakeOrder(int p_StoreID)
+        {
+            StoreModels.Order order = new StoreModels.Order()
+            {
+                StoreFrontID = p_StoreID,
+                Items = new List<StoreModels.OrderItem>(),
+            };
+            StoreModels.StoreFront store = _storeBL.GetStoreFrontAll(p_StoreID);
+            StoreWebUI.Models.OrderVM orderVM = new StoreWebUI.Models.OrderVM(order);
+            return View(orderVM);
+        }
+
+        public IActionResult BeginOrder(StoreWebUI.Models.OrderVM p_order)
+        {
+            StoreModels.Order order = new StoreModels.Order()
+            {
+                StoreFrontID = p_order.Order.StoreFrontID,
+                CustomerID = p_order.Order.CustomerID,
+                Location = p_order.Order.Location
+            };
+            StoreModels.Order newOrder = _customerBL.createOrder(order);
+            StoreModels.OrderItem item = new StoreModels.OrderItem()
+            {
+                OrderID = newOrder.ID
+            };
+            return View(new StoreWebUI.Models.OrderItemVM(item, _storeBL.GetStoreFrontAll(order.StoreFrontID)));
+        }
+
+        [HttpPost]
+        public IActionResult AddItem(StoreWebUI.Models.OrderItemVM p_order, string p_action)
+        {
+            StoreModels.OrderItem item = new StoreModels.OrderItem()
+            {
+                OrderID = p_order.Item.OrderID,
+                Product = _productBL.GetProduct(p_order.Item.ID),
+                Quantity = p_order.Item.Quantity
+            };
+            
+            StoreModels.OrderItem newItem = _customerBL.AddOrderItem(item);
+            return View(new StoreWebUI.Models.OrderItemVM(item, _storeBL.GetStoreFrontAll(p_order.StoreFront.ID)));
+        }
+
+        [HttpPost]
+        public IActionResult CompleteOrder(StoreWebUI.Models.OrderItemVM p_order)
+        {
+            // Get stuff from db 
+            StoreModels.Order order = _customerBL.GetOrder(p_order.Item.OrderID);
+            double price = 0;
+            foreach(var item in order.Items)
+            {
+                price += item.Product.Price * item.Quantity;
+            }
+            order = _customerBL.SetOrderPrice(p_order.Item.OrderID, price);
+
+            StoreWebUI.Models.OrderVM finalOrder= new StoreWebUI.Models.OrderVM()
+            {
+                Order = new StoreModels.Order()
+                {
+                    ID = order.ID,
+                    StoreFrontID = order.StoreFrontID,
+                    CustomerID = order.CustomerID,
+                    Location = order.Location,
+                    Price = order.Price,
+                    Items = order.Items
+                }
+            };
+            return View(finalOrder);
         }
     }
 }
