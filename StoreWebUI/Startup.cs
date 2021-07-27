@@ -33,6 +33,8 @@ namespace StoreWebUI
             services.AddScoped<ICustomerBL, CustomerBL>();
             services.AddScoped<IStoreRepository, StoreRepository>();
             services.AddScoped<IStoreBL, StoreBL.StoreBL>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductBL, ProductBL>();
 
         }
 
