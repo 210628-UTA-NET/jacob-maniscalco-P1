@@ -19,16 +19,12 @@ namespace StoreBL
         StoreModels.StoreFront GetStoreFront(int p_StoreFrontID);
 
         /// <summary>
-        ///  Adds a StoreFront object to the database 
+        /// Retrieves a StoreFront object from the database using an ID parameter with all related fields
         /// </summary>
-        /// <returns> Returns a boolean if the data was successfully added to the database</returns>
-        
-        /// <summary>
-        /// Retrieves a StoreModels.StoreFront object from the db with all related fields populated
-        /// </summary>
-        /// <param name="p_StoreFrontID">the store id</param>
-        /// <returns>A StoreModels.StoreFront object </returns>
+        /// <param name="p_storeFrontID">Corresponds to the storefront ID in the database</param>
+        /// <returns>StoreFront object</returns>
         StoreModels.StoreFront GetStoreFrontAll(int p_StoreFrontID);
+        
         Boolean addStoreFront(StoreModels.StoreFront p_store);
 
         /// <summary>
