@@ -123,6 +123,24 @@ namespace StoreWebUI.Controllers
             };
             return View(finalOrder);
         }
+
+        public IActionResult ViewCustomerOrders(int p_StoreID)
+        {
+            return View(new StoreWebUI.Models.StoreVM(p_StoreID));
+        }
+
+        public IActionResult OrderByPrice(int p_StoreID)
+        {
+            List<StoreModels.Order> custOrders = _storeBL.GetOrdersByPrice(p_StoreID);
+
+            return View(new StoreWebUI.Models.CustomerOrdersVM(custOrders));
+        }
+        public IActionResult OrderByDate(int p_StoreID)
+        {
+            List<StoreModels.Order> custOrders = _storeBL.GetOrdersByDate(p_StoreID);
+
+            return View(new StoreWebUI.Models.CustomerOrdersVM(custOrders));
+        }
     }
 }
 
