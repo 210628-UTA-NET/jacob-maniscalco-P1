@@ -42,8 +42,6 @@ namespace StoreWebUI.Controllers
 
         public IActionResult AddQuantity(StoreWebUI.Models.LineItemVM p_item)
         {
-            Console.WriteLine("\n\nQuantity: "+ p_item.Quantity);
-            Console.WriteLine("\n\nID: " + p_item.ID);
             StoreModels.LineItem item = new StoreModels.LineItem()
             {
                 ID = p_item.ID,
