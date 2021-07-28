@@ -10,7 +10,9 @@ namespace StoreWebUI.Models
         [Required]
         public int ID { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
+        [Display(Name = "Name")]
+        [StringLength(60, ErrorMessage = "Name must be less that 60 characters")]
         public string Name { get; set; }
         
         [Required]
