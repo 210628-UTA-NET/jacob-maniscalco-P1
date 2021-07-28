@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using StoreBL;
+using Serilog;
 
 namespace StoreWebUI.Controllers
 {
@@ -49,14 +50,29 @@ namespace StoreWebUI.Controllers
         }
         public IActionResult AddCustomer(StoreWebUI.Models.CustomerVM p_customer)
         {
-            StoreModels.Customer customer = new StoreModels.Customer()
+            if(ModelState.IsValid)
             {
-                Name = p_customer.Name,
-                Address = p_customer.Address,
-                PhoneNumber = p_customer.PhoneNumber
-            };
-            _customerBL.AddCustomer(customer);
-
+                StoreModels.Customer customer = new StoreModels.Customer()
+                {
+                    Name = p_customer.Name,
+                    Address = p_customer.Address,
+                    PhoneNumber = p_customer.PhoneNumber
+                };
+                try {
+                    _customerBL.AddCustomer(customer);
+                }catch(SystemException)
+                {
+                    Log.Logger = new LoggerConfiguration().WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day).
+                    CreateLogger();
+                    Log.Information("An error occured when adding a new user to the database.");
+                    return RedirectToAction("Index");
+                }
+                Log.Logger = new LoggerConfiguration().WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day).
+                CreateLogger();
+                Log.Information("New User " + customer.Name + " created.");
+            }
+            // Write event to log
+            
             return RedirectToAction("Index");
         }
 
