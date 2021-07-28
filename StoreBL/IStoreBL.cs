@@ -80,5 +80,7 @@ namespace StoreBL
 
         List<StoreModels.Order> GetOrdersByPrice(int p_storeID);
         List<StoreModels.Order> GetOrdersByDate(int p_storeID);
+
+        StoreModels.StoreFront GetStoreFrontInventory(int p_StoreID);
     }
 }

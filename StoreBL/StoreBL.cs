@@ -71,5 +71,10 @@ namespace StoreBL
          {
              return _repo.GetOrdersByDate(p_storeID);
          }
+
+         public StoreModels.StoreFront GetStoreFrontInventory(int p_StoreID)
+         {
+             return _repo.GetStoreFrontInventory(p_StoreID);
+         }
     }
 }
