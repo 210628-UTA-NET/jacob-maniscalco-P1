@@ -24,6 +24,11 @@ namespace StoreWebUI.Models
         public StoreVM()
         { }
 
+        public StoreVM(int p_StoreID)
+        {
+            ID = p_StoreID;
+        }
+
         public StoreVM(StoreFront p_store)
         {
             ID = p_store.ID;
