@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using StoreBL;
+using Serilog;
 
 namespace StoreWebUI.Controllers
 {
@@ -29,6 +30,8 @@ namespace StoreWebUI.Controllers
         }
         public IActionResult View(int p_StoreFrontID)
         {
+            StoreModels.StoreFront store = _storeBL.GetStoreFrontInventory(p_StoreFrontID);
+            
             return View(new StoreWebUI.Models.StoreVM(_storeBL.GetStoreFrontAll(p_StoreFrontID)));
         }
 
@@ -69,6 +72,11 @@ namespace StoreWebUI.Controllers
 
         public IActionResult BeginOrder(StoreWebUI.Models.OrderVM p_order)
         {
+            if(!_customerBL.CustomerExists(p_order.Order.CustomerID))
+            {
+                return RedirectToAction("Index");
+            }
+            StoreModels.StoreFront store = _storeBL.GetStoreFrontInventory(p_order.Order.StoreFrontID); 
             StoreModels.Order order = new StoreModels.Order()
             {
                 StoreFrontID = p_order.Order.StoreFrontID,
@@ -86,6 +94,7 @@ namespace StoreWebUI.Controllers
         [HttpPost]
         public IActionResult AddItem(StoreWebUI.Models.OrderItemVM p_order, string p_action)
         {
+            StoreModels.StoreFront store = _storeBL.GetStoreFrontInventory(p_order.StoreFront.ID);
             StoreModels.OrderItem item = new StoreModels.OrderItem()
             {
                 OrderID = p_order.Item.OrderID,
@@ -107,7 +116,22 @@ namespace StoreWebUI.Controllers
             {
                 price += item.Product.Price * item.Quantity;
             }
-            order = _customerBL.SetOrderPrice(p_order.Item.OrderID, price);
+            order.TimePlaced = DateTime.Now;
+            
+            try {
+                order = _customerBL.SetOrderPrice(p_order.Item.OrderID, price);
+            }catch(SystemException)
+            {
+                Log.Logger = new LoggerConfiguration().WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day).
+                CreateLogger();
+                Log.Information("An error occured when inserting an order into the database.");
+                return RedirectToAction("Index");
+            }
+            
+            // log order creation
+            Log.Logger = new LoggerConfiguration().WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day).
+            CreateLogger();
+            Log.Information("New  Order #" + order.ID + " created by User #" + order.CustomerID);
 
             StoreWebUI.Models.OrderVM finalOrder= new StoreWebUI.Models.OrderVM()
             {
