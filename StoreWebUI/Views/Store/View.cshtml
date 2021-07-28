@@ -40,40 +40,9 @@
     <div>
         @Html.ActionLink("Create Order", "MakeOrder", "Store", new {p_StoreID = Model.ID}, new  {@class = "btn btn-light"})
     </div>
-
-    <h2>Customer Orders</h2>
-    @foreach(var order in Model.Orders)
-    {
-        <h4>ID: # @Html.DisplayFor(ord => order.ID)</h4>
-        <h4>Store ID: # @Html.DisplayFor(ord => order.StoreFrontID)</h4>
-        <h4>Customer ID: # @Html.DisplayFor(ord => order.CustomerID)</h4>
-        <h4>Location: @Html.DisplayFor(ord => order.Location)</h4>
-        <h4>Price: @Html.DisplayFor(ord => order.Price)</h4>
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in order.Items)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.ID)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Product.Price)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Product.Description)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Product.Category)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
+     <div>
+        @Html.ActionLink("View Orders", "ViewCustomerOrders", "Store", new {p_StoreID = Model.ID} , new {@class = "btn btn-light"})
+    </div>
+   
 </body>
 </html>
