@@ -63,5 +63,13 @@ namespace StoreBL
          {
              return _repo.StoreExists(p_storeID);
          }
+         public List<StoreModels.Order> GetOrdersByPrice(int p_storeID)
+         {
+             return _repo.GetOrdersByPrice(p_storeID);
+         }
+         public List<StoreModels.Order> GetOrdersByDate(int p_storeID)
+         {
+             return _repo.GetOrdersByDate(p_storeID);
+         }
     }
 }

@@ -77,5 +77,8 @@ namespace StoreBL
         /// <param name="p_storeID">the store id</param>
         /// <returns>boolean indicating if the store exists</returns>
         bool StoreExists(int p_storeID);
+
+        List<StoreModels.Order> GetOrdersByPrice(int p_storeID);
+        List<StoreModels.Order> GetOrdersByDate(int p_storeID);
     }
 }

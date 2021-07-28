@@ -44,7 +44,15 @@ namespace StoreDL
 
         public List<StoreModels.Order> GetOrders(int p_storeID)
         {
-            return _context.Orders.Where(order => order.StoreFrontID == p_storeID).ToList();
+            return _context.Orders.Include(order => order.Items).ThenInclude(item => item.Product).Where(order => order.StoreFrontID == p_storeID).ToList();
+        }
+        public List<StoreModels.Order> GetOrdersByPrice(int p_storeID)
+        {
+            return _context.Orders.Include(order => order.Items).ThenInclude(item => item.Product).Where(order => order.StoreFrontID == p_storeID).OrderBy(order => order.Price).ToList();
+        }
+        public List<StoreModels.Order> GetOrdersByDate(int p_storeID)
+        {
+            return _context.Orders.Include(order => order.Items).ThenInclude(item => item.Product).Where(order => order.StoreFrontID == p_storeID).OrderBy(order => order.TimePlaced).ToList();
         }
 
         public StoreModels.LineItem addInventory(int p_StoreID, int p_LineItemID, int p_quantity)
