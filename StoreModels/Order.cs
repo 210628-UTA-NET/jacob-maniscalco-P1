@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace StoreModels {
@@ -9,6 +10,7 @@ namespace StoreModels {
        public List<OrderItem> Items { get; set; }
        public string Location { get; set; }
        public double Price  { get; set; }
+       public DateTime TimePlaced { get; set; }
 
        public Order()
        { } 
