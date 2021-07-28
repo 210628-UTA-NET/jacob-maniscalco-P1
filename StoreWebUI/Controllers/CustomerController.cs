@@ -71,7 +71,12 @@ namespace StoreWebUI.Controllers
                 CreateLogger();
                 Log.Information("New User " + customer.Name + " created.");
             }
-            // Write event to log
+            else
+            {
+                Log.Logger = new LoggerConfiguration().WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day).
+                CreateLogger();
+                Log.Information("There was an error with the customer model when attempting to add a new customer.");
+            }
             
             return RedirectToAction("Index");
         }
