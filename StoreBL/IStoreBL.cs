@@ -78,9 +78,25 @@ namespace StoreBL
         /// <returns>boolean indicating if the store exists</returns>
         bool StoreExists(int p_storeID);
 
+        /// <summary>
+        /// Returns a list of orders from the db ordered by price
+        /// </summary>
+        /// <param name="p_storeID">the id for the store</param>
+        /// <returns>list of order objects</returns>
         List<StoreModels.Order> GetOrdersByPrice(int p_storeID);
+
+        /// <summary>
+        /// Returns a list of orders from the db ordered by date
+        /// </summary>
+        /// <param name="p_storeID">the id of the store</param>
+        /// <returns></returns>
         List<StoreModels.Order> GetOrdersByDate(int p_storeID);
 
+        /// <summary>
+        /// Retrieves the store inventory
+        /// </summary>
+        /// <param name="p_StoreID">the id of the store</param>
+        /// <returns>storefront object</returns>
         StoreModels.StoreFront GetStoreFrontInventory(int p_StoreID);
     }
 }

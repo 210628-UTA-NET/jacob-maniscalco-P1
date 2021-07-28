@@ -75,11 +75,33 @@ namespace StoreBL
         /// <returns>boolean if the customer's information was successfully updated</returns>
         StoreModels.Customer UpdateCustomer(StoreModels.Customer p_customer);
 
+        /// <summary>
+        /// Inserts an order into the database 
+        /// </summary>
+        /// <param name="p_order">the order object to be inserted</param>
+        /// <returns>returns the inserted store</returns>
         StoreModels.Order createOrder(StoreModels.Order p_order);
 
+        /// <summary>
+        /// Adds an OrderItem to the database
+        /// </summary>
+        /// <param name="p_OrderItem">the order item object to be inserted</param>
+        /// <returns>the order item object that was inserted </returns>
         StoreModels.OrderItem AddOrderItem(StoreModels.OrderItem p_OrderItem);
 
+        /// <summary>
+        /// Retrieves a order from the database
+        /// </summary>
+        /// <param name="p_OrderID">the order id corresponding to the order </param>
+        /// <returns>the order object that was retrieved </returns>
         StoreModels.Order GetOrder(int p_OrderID);
+
+        /// <summary>
+        /// Sets the price of an order in the db
+        /// </summary>
+        /// <param name="p_OrderID">the id of the order</param>
+        /// <param name="p_price">the price of the order </param>
+        /// <returns>the order object that was affected</returns>
         StoreModels.Order SetOrderPrice(int p_OrderID, double p_price);
     }
 }
