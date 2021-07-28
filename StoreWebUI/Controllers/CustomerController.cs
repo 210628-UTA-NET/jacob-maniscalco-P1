@@ -37,6 +37,11 @@ namespace StoreWebUI.Controllers
                 PhoneNumber = customer.PhoneNumber
             };
             _customerBL.UpdateCustomer(cust);
+            
+            // log update
+            Log.Logger = new LoggerConfiguration().WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day).
+            CreateLogger();
+            Log.Information("Customer #" + cust.ID + " was updated.");
 
            return RedirectToAction("Index");
         }
