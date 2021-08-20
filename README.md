@@ -21,6 +21,16 @@ BootstrapJS, and Javascript to create the front end.
 - Administrators can replenish inventory via a admin specific menu
 - Administrators can view all order histories at a specific store
 
+## Usage
+View Customer Details 
+![Customer Details](/images/CustomerDetails.PNG)
+
+View Order Details
+![Order Details](/images/OrderDetails.PNG)
+
+View Customers
+![CustomerView](/images/ViewCustomers.PNG)
+
 ## Getting Started
 - `git clone https://github.com/210628-UTA-NET/jacob-maniscalco-P1.git`
 - change directory to `StoreWebUI`
