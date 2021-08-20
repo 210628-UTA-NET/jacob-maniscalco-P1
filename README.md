@@ -27,5 +27,4 @@ BootstrapJS, and Javascript to create the front end.
 - run `dotnet restore` to restore dependencies
 - run `dotnet run` to start the application
 - navigate to the specified port specified in the terminal to view the website
-## Usage
 
