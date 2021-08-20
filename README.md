@@ -23,13 +23,13 @@ BootstrapJS, and Javascript to create the front end.
 
 ## Usage
 View Customer Details 
-![Customer Details](/images/CustomerDetails.PNG)
+![Customer Details](./Images/CustomerDetails.PNG)
 
 View Order Details
-![Order Details](/images/OrderDetails.PNG)
+![Order Details](./Images/OrderDetails.PNG)
 
 View Customers
-![CustomerView](/images/ViewCustomers.PNG)
+![CustomerView](./Images/ViewCustomers.PNG)
 
 ## Getting Started
 - `git clone https://github.com/210628-UTA-NET/jacob-maniscalco-P1.git`
